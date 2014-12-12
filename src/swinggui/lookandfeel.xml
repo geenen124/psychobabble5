@@ -1,0 +1,125 @@
+<synth>
+
+
+  <style id="basicStyle">
+	    <font name="Avenir" size="12"/>
+	    <state>
+		      <color value="WHITE" type="BACKGROUND"/>
+		      <color value="BLACK" type="FOREGROUND"/>
+	    </state>
+  </style>
+ 
+ 
+  <style id="basicbuttonStyle">
+	  	<insets top="20" left="50" bottom="25" right="50"/>
+		<state>
+		   		<font name="Avenir" size="18"/>
+		   		<color value="#918f8f" type="TEXT_FOREGROUND"/>
+				<imagePainter method="buttonBackground" path="images/button_stock.png" sourceInsets="30 35 35 35"/>
+				<color value="#FFFFFF" type="FOREGROUND"/>
+		</state>
+		<state value="MOUSE_OVER">
+				<font name="Avenir" size="18"/>
+				<color value="#747272" type="TEXT_FOREGROUND"/>
+				<imagePainter method="buttonBackground" path="images/button_mouseover.png" sourceInsets="30 35 35 35"/>
+		</state>
+		<state value="MOUSE_OVER and PRESSED">
+				<font name="Avenir" size="18"/>
+				<color value="#A8D599" type="TEXT_FOREGROUND"/>
+				<imagePainter method="buttonBackground" path="images/button_mouseover.png" sourceInsets="30 35 35 35"/>
+		</state>
+  </style>
+  
+  
+  <style id="headerouter">
+	  	<insets top="15" left="70" bottom="50" right="55"/>
+	  	<font name="Avenir" size="20" style="Roman"/>
+	  	<imagePainter method="buttonBackground" path="images/Header/Header_Outer.png" sourceInsets="0 0 0 0"/>
+	  	<state>
+	   			<color value="#918f8f" type="TEXT_FOREGROUND"/>
+		</state>
+		<state value="MOUSE_OVER">
+				<color value="#747272" type="TEXT_FOREGROUND"/>
+		</state>
+		<state value="MOUSE_OVER and PRESSED">
+				<color value="#A8D599" type="TEXT_FOREGROUND"/>
+		</state>
+  </style>
+  
+  
+  <style id="headerouter2">
+	  	<insets top="15" left="55" bottom="50" right="70"/>
+	  	<font name="Avenir" size="20" style="Roman"/>
+	  	<imagePainter method="buttonBackground" path="images/Header/Header_Outer2.png" sourceInsets="0 0 0 0"/>
+	  	<state>
+	   			<color value="#918f8f" type="TEXT_FOREGROUND"/>
+		</state>
+		<state value="MOUSE_OVER">
+				<color value="#747272" type="TEXT_FOREGROUND"/>
+		</state>
+		<state value="MOUSE_OVER and PRESSED">
+				<color value="#A8D599" type="TEXT_FOREGROUND"/>
+		</state>
+  </style>
+  
+  
+  <style id="headermiddle">
+	  	<insets top="15" left="55" bottom="50" right="55"/>
+	  	<font name="Avenir" size="20" style="Roman"/>
+	  	<imagePainter method="buttonBackground" path="images/Header/Header_Middle.png" sourceInsets="0 0 0 0"/>
+	  	<state>
+	   			<color value="#918f8f" type="TEXT_FOREGROUND"/>
+		</state>
+		<state value="MOUSE_OVER">
+				<color value="#747272" type="TEXT_FOREGROUND"/>
+		</state>
+		<state value="MOUSE_OVER and PRESSED">
+				<color value="#A8D599" type="TEXT_FOREGROUND"/>
+		</state>
+  </style>
+  
+  <style id="headerinner">
+	  	<insets top="46" left="40" bottom="47" right="40"/>
+	  	<font name="Avenir" size="20" style="Roman"/>
+	  	<state>
+	   		<imagePainter method="buttonBackground" path="images/Header/Header_Inner.png" sourceInsets="0 0 0 0"/>
+		</state>
+		<state value="MOUSE_OVER">
+			<imagePainter method="buttonBackground" path="images/Header/Header_Inner_MOUSE.png" sourceInsets="0 0 0 0"/>
+		</state>
+  </style>
+  
+  
+  <style id = "basicpanelStyle">
+	  	<insets top="32" left="47" bottom="62" right="47"/>
+	  	<opaque value="FALSE"/>
+	  	<imagePainter method="panelBackground" path="images/panel.png" sourceInsets="60 60 80 60"/>
+  </style>
+  
+  
+  <style id = "basiclabelStyle">
+		<state>
+		  		<font name="Avenir" size="26" style="Book"/>
+		  		<color value="#918f8f" type="TEXT_FOREGROUND"/>
+	  	</state>
+  </style>
+  
+  
+  <style id = "basicLineSeparatorStyle">
+  		<imagePainter method="labelBackground" path="images/Line_Separator.png" sourceInsets="0 0 0 0"/>
+  </style>
+  
+  
+  <bind style="basicStyle" type="region" key=".*"/>
+  <bind style="basiclabelStyle" type="region" key="Label"/>
+  <bind style="basicpanelStyle" type="name" key="Panel"/>
+  <bind style="basicbuttonStyle" type="name" key="Test"/>
+  
+  
+  <bind style="headerouter" type="name" key="HeaderOuter"/>
+  <bind style="headerouter2" type="name" key="HeaderOuter2"/>
+  <bind style="headermiddle" type="name" key="HeaderMiddle"/>
+  <bind style="headerinner" type="name" key="HeaderInner"/>
+   
+   
+</synth>
