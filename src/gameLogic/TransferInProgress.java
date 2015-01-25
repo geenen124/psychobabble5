@@ -67,8 +67,9 @@ public class TransferInProgress {
 
 	
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/** Checks if this and obj are equal to each other or have equal attribute values
+	 * @param obj the obj to compare this with
+	 * @return true if obj and this are equal, false otherwise
 	 */
 	@Override
 	public boolean equals(Object obj) {

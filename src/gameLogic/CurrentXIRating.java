@@ -33,7 +33,9 @@ public class CurrentXIRating {
 		this.goalkeeping = goalkeeping;
 		this.total=total;
 	}
-	
+	/** Returns a string representation of a CurrentXIRating
+	 * @return a string representation of this
+	 */
 	@Override
 	public String toString() {
 		return "CurrentXIRating [finishing=" + finishing + ", dribbling="
@@ -111,7 +113,11 @@ public class CurrentXIRating {
 	public void setTotal(int total) {
 		this.total = total;
 	}
-
+	/** Calculates the CurrentXIRating of a team
+	 * 
+	 * @param t the team to calculate the rating for
+	 * @return a CurrentXIRating containing the ratings for t's current team
+	 */
 	public static CurrentXIRating getCurrentXIRating (Team t) {
 		int finishing, dribbling, stamina, defending, goalkeeping, total;
 		Player[] list = t.getPositions().getPositionArray();
@@ -202,14 +208,13 @@ public class CurrentXIRating {
 		return new CurrentXIRating (finishing, dribbling, stamina, defending, goalkeeping, total);
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
+	
 	
 	
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/**
+	 * Checks if this and obj are the same or have the same attribute values
+	 * @return true if they are equal, false otherwise
 	 */
 	@Override
 	public boolean equals(Object obj) {

@@ -8,7 +8,7 @@ import libraryClasses.Player;
 import libraryClasses.Team;
 
 /** This class contains all the GameLogic ; it calculates the results, goalmakers, assistmakers and who got yellow/red cards
- * It will be expanded with injuries
+ *  and also who got injuries. It also contains a method for auto-changing positions of a team
  * @author Menno
  *
  */
@@ -17,11 +17,19 @@ public abstract class GameLogic {
 	private static int rngCounter = (int)System.currentTimeMillis();
 	private static boolean testing=false;
 	private static int seed;
-	
+	/** This method is used to set the seed of the random generator (which is only used if testing=true)
+	 * 
+	 * @param seedIn the seed to set
+	 */
 	public static void setSeed(int seedIn) {
 		seed=seedIn;
 	}
 	
+	/** This method is used to set the testing boolean; if true, the seed can be determined by the tester, else it will 
+	 * be based on the currentTimeMillis so completely random
+	 * 
+	 * @param testingIn the testing to set
+	 */
 	public static void setTesting(boolean testingIn) {
 		testing=testingIn;
 	}
@@ -158,14 +166,11 @@ public abstract class GameLogic {
 			
 		} return playersWithYellow;
 	}
-	/** This method returns the players that scored the goals
+	/** This method calculates which players made the goals for a team
 	 * 
-	 * @param t1 The home-playing team
-	 * @param t2 The away-playing team
-	 * @param score1 The score for t1
-	 * @param score2 The score for t2
-	 * @return An ArrayList of FieldPlayers that made the goals for t1 and t2 respectively. An empty 
-	 * ArrayList if the score was 0-0
+	 * @param t the Team the goalmakers are calculated for
+	 * @param score the score of the team; to determine the amount of goalmakers needed
+	 * @return An ArrayList with players that scored goals; an empty ArrayList if the score was <=0
 	 */
 	public static ArrayList<FieldPlayer> getGoals (Team t, int score) {
 		// first retrieve the current team
@@ -238,13 +243,11 @@ public abstract class GameLogic {
 	}
 	
 	
-	/** The method returns the players that made the assists
+	/** This method calculates which players made the assists for a team
 	 * 
-	 * @param t1 The home-playing team
-	 * @param t2 The away-playing team
-	 * @param score1 The score of t1
-	 * @param score2 The score of t2
-	 * @return An ArrayList of FieldPlayers who made the assists. An empty ArrayList if the score is 0-0
+	 * @param t the Team the assistmakers are calculated for
+	 * @param score the score of the team; to determine the amount of assistmakers needed
+	 * @return An ArrayList with players that made assists; an empty ArrayList if the score was <=0
 	 */
 	public static ArrayList<FieldPlayer> getAssists(Team t, int score) {
 		// Note: The comments in this method are short. For a more detailed explanation, see getGoals(), which
@@ -356,7 +359,7 @@ public abstract class GameLogic {
 		
 		
 	}
-	/** This method calculates the scores for a match in which Team 2 wins
+	/** This method calculates the score for team 1 for a match in which Team 2 wins
 	 * 
 	 * @param allresults an array that contains as first value 2, it will be appended with the scores
 	 * @param t1rating the rating of the Current Team of t1
@@ -428,7 +431,12 @@ public abstract class GameLogic {
 			
 			
 		}
-	
+	/** This method calculates the score difference for team 2 with respect to team 1 for a match in which Team 2 wins
+	 * 
+	 * @param allresults an array that contains as first value 2 and as the second value the score of team 1
+	 * @param t1rating the rating of the Current Team of t1
+	 * @param t2rating the rating of the Current Team of t2
+	 */
 	public static void Team2WintWinnerScore(int[] allresults, CurrentXIRating t1rating, CurrentXIRating t2rating) {
 		int difference = t2rating.getFinishing() - t1rating.getDefending();
 		int random = GameLogic.randomGenerator(0, 100);
@@ -488,9 +496,9 @@ public abstract class GameLogic {
 			}
 		}
 	}
-	/** The method calculates the scores for a match in which Team 1 wins
+	/** The method calculates the score for team 2 for a match in which Team 1 wins
 	 * 
-	 * @param allresults an array of integers of which the first value is 1, it will be appended with the scores of both teams
+	 * @param allresults an array of integers of which the first value is 1, it will be appended with the scores
 	 * @param t1rating the rating of the Current Team of the home playing team
 	 * @param t2rating the rating of the Current Team of the away playing team
 	 */
@@ -547,7 +555,12 @@ public abstract class GameLogic {
 		
 		
 	}
-	
+	/** This method calculates the score for team 1 for a match in which Team 1 wins
+	 * 
+	 * @param allresults an array that contains as first value 1 and as the third value the score of team 2
+	 * @param t1rating the rating of the Current Team of team 1
+	 * @param t2rating the rating of the Current Team of team 2
+	 */
 	public static void Team1WintWinnerScore(int[] allresults, CurrentXIRating t1rating, CurrentXIRating t2rating) {
 		int difference = t1rating.getFinishing() - t2rating.getDefending();
 		int random = GameLogic.randomGenerator(0, 100);
@@ -701,7 +714,13 @@ public abstract class GameLogic {
 	}
 	
 	
-	
+	/** This method returns a random number for a team, based on player statistics, home advantage and luck. 
+	 * It is used to determine the result of a match
+	 * 
+	 * @param trating the rating of the team
+	 * @param home if a team is the home playing team or not
+	 * @return a random number based on the statistics of this team
+	 */
 	public static int getRandomNumberForTeam (CurrentXIRating trating, boolean home) {
 		int totalrating = trating.getTotal();
 		
@@ -717,7 +736,11 @@ public abstract class GameLogic {
 		
 		return GameLogic.randomGenerator(1, totalrating);
 	}
-	
+	/** This method automatically replaces one random player from the current Positions with another player, preferrably
+	 * of the same type.
+	 * 
+	 * @param t the Team to performe the change for
+	 */
 	public static void changePositions(Team t) {
 		
 		Player[] array = t.getPositions().getPositionArray();

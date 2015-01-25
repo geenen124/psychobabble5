@@ -34,6 +34,11 @@ public class TeamRating {
 		this.total=total;
 	}
 	
+	/** Method to calculate the TeamRating of a team
+	 * 
+	 * @param t the team to calculate the rating for
+	 * @return a TeamRating with values based on the player statistics in t
+	 */
 	public static TeamRating calculateTeamRating(Team t) {
 		int finishing, dribbling, stamina, defending, goalkeeping, total;
 		ArrayList<Player> list = t.getTeam();
@@ -122,7 +127,10 @@ public class TeamRating {
 		
 		return new TeamRating (finishing, dribbling, stamina, defending, goalkeeping, total);
 	}
-
+/**
+ * Returns a string=representation of a TeamRating
+ * @return a string-representation of this
+ */
 	@Override
 	public String toString() {
 		return "TeamRating [finishing=" + finishing + ", dribbling="
@@ -130,7 +138,10 @@ public class TeamRating {
 				+ defending + ", goalkeeping=" + goalkeeping + ", total="
 				+ total + "]";
 	}
-	
+	/**
+	 * 
+	 * @return the total
+	 */
 	public int getTotal() {
 		return total;
 	}
@@ -212,13 +223,11 @@ public class TeamRating {
 		this.total = total;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
 	
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	
+	/** Checks if this and obj are equal to each other or have equal attribute values
+	 * @param obj the obj to compare this with
+	 * @return true if obj and this are equal, false otherwise
 	 */
 	@Override
 	public boolean equals(Object obj) {

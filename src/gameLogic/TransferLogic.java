@@ -462,7 +462,12 @@ public abstract class TransferLogic {
 		
 		
 	}
-	
+	/** This method is called for an automatic transfer - it will initiate an attempt to buy a random player for three different teams
+	 * 
+	 * 
+	 * @param playersTeam the team the user is currently managing
+	 * @param library the library of the current competition
+	 */
 	public static void AutoTransfer(Team playersTeam, Library library) {
 		
 		int playersteam = library.getLibrary().indexOf(playersTeam);
@@ -489,7 +494,12 @@ public abstract class TransferLogic {
 		
 		
 	}
-	
+	/** This class makes an automatic attempt to buy a random player for the team t
+	 * 
+	 * @param t the team that is attempting to buy a player
+	 * @param playersTeam the team the user is currently managing
+	 * @param library the library of the current competition
+	 */
 	public static void AutoTransferForTeam(Team t, Team playersTeam, Library library) {
 		
 		ArrayList<Player> allplayers = new ArrayList<Player>();
